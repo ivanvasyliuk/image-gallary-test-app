@@ -12,7 +12,7 @@ const ImageItem = ({image, index}) => {
 
   function onPress() {
     navigation.navigate(screens.ImagePreview, {
-      image: image,
+      image,
     });
   }
 

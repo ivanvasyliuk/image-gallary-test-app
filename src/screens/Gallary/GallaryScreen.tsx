@@ -10,9 +10,7 @@ import s from './styles';
 
 const keyExtractor = item => item.id;
 
-const renderItem: ListRenderItem<any> = ({item, index}) => (
-  <ImageItem index={index} image={item} />
-);
+const renderItem = ({item, index}) => <ImageItem index={index} image={item} />;
 
 const GallaryScreen = () => {
   const [refreshing, setRefreshing] = useState(false);
@@ -23,7 +21,6 @@ const GallaryScreen = () => {
   const {bottom} = useSafeAreaInsets();
 
   useEffect(() => {
-    // dispatch(fetchPhotos());
     setIsLoadind(true);
 
     dispatch(fetchPhotos())
@@ -56,11 +53,13 @@ const GallaryScreen = () => {
         onRefresh={onRefresh}
         refreshing={refreshing}
       />
-      <View style={s.loaderContainer}>
-        {isLoadind && !list.length && (
-          <ActivityIndicator size="large" color={colors.border} />
-        )}
-      </View>
+      {isLoadind && !list.length && (
+        <ActivityIndicator
+          style={s.loader}
+          size="large"
+          color={colors.border}
+        />
+      )}
     </View>
   );
 };
