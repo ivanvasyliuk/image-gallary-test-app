@@ -1,9 +1,17 @@
-import {Text, View} from 'react-native';
+import {Image, View} from 'react-native';
+import {useRoute} from '@react-navigation/native';
+import s from './styles';
 
 const ImagePreview = () => {
+  const {params} = useRoute();
+
   return (
-    <View>
-      <Text>Image</Text>
+    <View style={s.container}>
+      <Image
+        style={s.image}
+        source={{uri: params.image.links.download}}
+        alt={params.image.alt_description}
+      />
     </View>
   );
 };
