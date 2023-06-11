@@ -1,40 +1,25 @@
-import {
-  createAsyncThunk,
-  createEntityAdapter,
-  createSlice,
-} from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import Api from '../../api';
 
-export const fetchPhotos = createAsyncThunk('photos/fetch', async () => {
-  const response = await Api.Photos.fetchPhotos();
-  return response.data;
-});
+export const fetchPhotos = createAsyncThunk(
+  'photos/fetch',
+  async (_, thunkAPI) => {
+    const response = await Api.Photos.fetchPhotos();
+    return response.data;
+  },
+);
 
-const photosAdapter = createEntityAdapter({
-  selectId: photo => photo.id,
-  // sortComparer: (a, b) => b.date.localeCompare(a.date),
-});
-
-const initialState = photosAdapter.getInitialState({items: []});
+const initialState = {photos: []};
 
 export const photosReducer = createSlice({
   name: 'photos',
   initialState,
-  reducers: {
-    fetch(state) {
-      Api.Photos.fetchPhotos();
-    },
-    setAllPhotos: photosAdapter.setAll,
-  },
+  reducers: {},
   extraReducers: builder => {
-    // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(fetchPhotos.fulfilled, (state, action) => {
-      // Add user to the state array
-      state.items = action.payload;
+      state.photos = action.payload;
     });
   },
 });
-
-export const {fetch, setAllPhotos} = photosReducer.actions;
 
 export default photosReducer.reducer;

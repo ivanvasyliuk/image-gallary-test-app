@@ -24,12 +24,13 @@ const styles = StyleSheet.create({
     marginLeft: 4,
     marginRight: 8,
   },
+
   title: {
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 15,
     marginHorizontal: 10,
-    marginTop: 5,
+    marginTop: 8,
     color: colors.black,
   },
   userNameTitle: {
@@ -37,9 +38,15 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 18,
     marginLeft: 10,
-    marginTop: 5,
-    marginBottom: 2,
+    marginTop: 8,
+    marginBottom: 5,
     color: colors.black,
+  },
+  loaderContainer: {
+    position: 'absolute',
+    top: 60,
+    left: 0,
+    right: 0,
   },
 });
 export default styles;

@@ -1,8 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
-import photosReducer from './reducers/photosReducer';
+import PhotosReducer from './reducers/PhotosReducer';
 
 export const store = configureStore({
   reducer: {
-    photos: photosReducer,
+    photoStore: PhotosReducer,
   },
 });

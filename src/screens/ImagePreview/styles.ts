@@ -6,5 +6,11 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'contain',
   },
+  loaderContainer: {
+    position: 'absolute',
+    top: '49%',
+    left: 0,
+    right: 0,
+  },
 });
 export default styles;
