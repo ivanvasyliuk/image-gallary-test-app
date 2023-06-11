@@ -1,8 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
-import RootReducer from './reducers/reducer';
+import photosReducer from './reducers/mainReducer';
 
 export const store = configureStore({
   reducer: {
-    counter: RootReducer,
+    photos: photosReducer,
   },
 });
